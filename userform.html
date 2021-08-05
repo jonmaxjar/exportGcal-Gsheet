@@ -1,0 +1,63 @@
+  <!DOCTYPE html>
+  <html>
+    <head>
+      <!--Import Google Icon Font-->
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <!-- Compiled and minified CSS -->
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+      <!--Let browser know website is optimized for mobile-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+
+    <body>
+
+
+      <div class="container">
+        <div class="row">
+          <div class="input-field col s12">
+            <i class="material-icons prefix">account_circle</i>
+            <input id="username" type="text" class="validate">
+            <label for="username">Calendar ID</label>
+          </div>
+          <div class="input-field col s12">
+             <i class="material-icons prefix">event</i>  
+             <input id="fromcal" type="date" class="validate">
+             <label for="fromcal">From</label>
+          </div>
+          <div class="input-field col s12">
+             <i class="material-icons prefix">event</i>  
+             <input id="tocal" type="date" class="validate">
+             <label for="tocal">To</label>
+          </div>
+          <div class="input-field col s12">
+              <button class="btn waves-effect waves-light" id="btn">GET EVENTS
+                <i class="material-icons right">send</i>
+              </button>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Compiled and minified JavaScript -->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+      <script>
+
+        var nameBox = document.getElementById("username");
+        var fromCalBox = document.getElementById("fromcal");
+        var toCalBox = document.getElementById("tocal");
+
+        document.getElementById("btn").addEventListener("click",addRecord);
+
+        function addRecord(){
+          var data = {
+            name: nameBox.value,
+            fromc: fromCalBox.value,
+            toc: toCalBox.value
+          }
+          google.script.run.loadCalendar(data);
+
+        }
+
+      </script>
+    </body>
+  </html>
